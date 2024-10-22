@@ -1,0 +1,40 @@
+<script>
+	import Header from '../components/Header.svelte';
+
+	let name = $state('tommato');
+
+	let status = $state('open');
+	let fullName = $derived(name + ' ' + 'Hooker');
+
+	function onclick() {
+		status = status === 'open' ? 'closed' : 'open';
+	}
+	// function toggle() {
+	// 	status = status === 'open' ? 'closed' : 'open';
+	// }
+</script>
+
+<Header {name} fakeName="Max" />
+
+<h2 class="text-red-500 text-center text-2xl">{fullName}</h2>
+
+<input type="text" bind:value={name} />
+
+<p class="text-black text-3xl text-center font-main drop-shadow-3xl">The Store is {status}.</p>
+
+<button
+	{onclick}
+	class="text-center mx-auto mt-5 rounded-lg block py-2 px-4 border-none bg-green-400 text-white shadow-xl select-none"
+	>Toggle status</button
+>
+
+<style>
+	input {
+		padding: 0.5rem 1rem;
+		border: 1px dotted red;
+		position: relative;
+		margin-top: 1rem;
+		top: 20%;
+		left: 5%;
+	}
+</style>
